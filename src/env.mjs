@@ -28,8 +28,14 @@ export const env = createEnv({
       // VERCEL_URL doesn't include `https` so it cant be validated as a URL
       process.env.VERCEL ? z.string() : z.string().url()
     ),
-    DISCORD_CLIENT_ID: z.string(),
-    DISCORD_CLIENT_SECRET: z.string(),
+    // Next Auth Discord Provider
+    // DISCORD_CLIENT_ID: z.string(),
+    // DISCORD_CLIENT_SECRET: z.string(),
+    // Next Auth Cognito Provider
+    COGNITO_USER_POOL_ID: z.string(),
+    COGNITO_CLIENT_ID: z.string(),
+    COGNITO_CLIENT_SECRET: z.string(),
+    COGNITO_ISSUER: z.string(),
   },
 
   /**
@@ -50,8 +56,14 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-    DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
-    DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
+    // Next Auth Discord Provider
+    // DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
+    // DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
+    // Next Auth Cognito Provider
+    COGNITO_USER_POOL_ID: process.env.COGNITO_USER_POOL_ID,
+    COGNITO_CLIENT_ID: process.env.COGNITO_CLIENT_ID,
+    COGNITO_CLIENT_SECRET: process.env.COGNITO_CLIENT_SECRET,
+    COGNITO_ISSUER: process.env.COGNITO_ISSUER,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

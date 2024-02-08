@@ -5,9 +5,10 @@ import {
   type DefaultSession,
   type NextAuthOptions,
 } from "next-auth";
-import DiscordProvider from "next-auth/providers/discord";
+//import DiscordProvider from "next-auth/providers/discord";
+import CognitoProvider from "next-auth/providers/cognito";
 
-import { env } from "~/env";
+import { env } from "~/env.mjs";
 import { db } from "~/server/db";
 
 /**
@@ -48,10 +49,18 @@ export const authOptions: NextAuthOptions = {
   },
   adapter: PrismaAdapter(db),
   providers: [
-    DiscordProvider({
-      clientId: env.DISCORD_CLIENT_ID,
-      clientSecret: env.DISCORD_CLIENT_SECRET,
-    }),
+    // Next Auth Discord Provider
+    // DiscordProvider({
+    //   clientId: env.DISCORD_CLIENT_ID,
+    //   clientSecret: env.DISCORD_CLIENT_SECRET,
+    // }),
+    // Next Auth Cognito Provider
+    CognitoProvider({
+      clientId: env.COGNITO_CLIENT_ID,
+      clientSecret: env.COGNITO_CLIENT_SECRET,
+      issuer: env.COGNITO_ISSUER,
+    })
+    
     /**
      * ...add more providers here.
      *

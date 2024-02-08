@@ -1,19 +1,23 @@
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
-
+import { ConfigProvider } from 'antd';
 import { api } from "~/utils/api";
-
-import "~/styles/globals.css";
+import theme from '../theme/themeConfig';
+import MainLayout from "~/components/layout";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
   return (
-    <SessionProvider session={session}>
-      <Component {...pageProps} />
-    </SessionProvider>
+    <ConfigProvider theme={theme}>
+      <SessionProvider session={session}>
+        <MainLayout>
+          <Component {...pageProps} />
+        </MainLayout>
+      </SessionProvider>
+    </ConfigProvider>
   );
 };
 
