@@ -60,6 +60,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <Space direction="vertical">
           <Switch
             onChange={() => setIsDarkMode(!isDarkMode)}
+            value={isDarkMode}
             checkedChildren="🌜"
             unCheckedChildren="🌞"
           />
